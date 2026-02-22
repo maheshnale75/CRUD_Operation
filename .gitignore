@@ -2,3 +2,6 @@
 bin/
 obj/
 *.user
+UI/node_modules/
+UI/dist/
+
