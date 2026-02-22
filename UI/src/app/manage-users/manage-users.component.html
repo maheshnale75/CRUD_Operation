@@ -1,0 +1,98 @@
+<div class="dashboard">
+
+  <h2>User Management Dashboard</h2>
+
+  <!-- Total Count -->
+  <div class="card total-card">
+    <h3>Total Users</h3>
+    <p>{{ totalUsers }}</p>
+  </div>
+
+  <!-- Last 5 Users -->
+  <div class="card">
+    <h3>Last 5 Added Users</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Country</th>
+          <th>Role</th>
+          <th>Created Date</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr *ngFor="let user of lastFiveUsers">
+    <td>
+      <img 
+        *ngIf="user.profileImagePath"
+        [src]="'https://localhost:7080' + user.profileImagePath"
+        class="profile-img"
+        alt="Profile"
+      />
+    </td>
+    <td>{{ user.userName }}</td>
+    <td>{{ user.emailId }}</td>
+    <td>{{ user.mobileNumber }}</td>
+    <td>{{ user.country }}</td>
+    <td>{{ user.role }}</td>
+    <td>{{ user.createdDateTime | date:'medium' }}</td>
+  </tr>
+</tbody>
+
+    </table>
+  </div>
+
+  <!-- Full User List -->
+  <div class="card">
+
+  <h3 
+    class="clickable"
+    (click)="toggleAllUsers()">
+    All Users (Recent First)
+    <span>
+      {{ showAllUsers ? '▲' : '▼' }}
+    </span>
+  </h3>
+
+  <div *ngIf="showAllUsers">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Profile</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Country</th>
+          <th>Role</th>
+          <th>Created Date</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr *ngFor="let user of lastFiveUsers">
+    <td>
+      <img 
+        *ngIf="user.profileImagePath"
+        [src]="'https://localhost:7080' + user.profileImagePath"
+        class="profile-img"
+        alt="Profile"
+      />
+    </td>
+    <td>{{ user.userName }}</td>
+    <td>{{ user.emailId }}</td>
+    <td>{{ user.mobileNumber }}</td>
+    <td>{{ user.country }}</td>
+    <td>{{ user.role }}</td>
+    <td>{{ user.createdDateTime | date:'medium' }}</td>
+  </tr>
+</tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="logo">MyApp</div>
+
+  <div class="right-section">
+    <!-- Admin/HR Menu -->
+    <div class="menu-icon" *ngIf="isAdminOrHR" (click)="toggleAdminMenu()">
+      ☰
+    </div>
+
+    <div class="admin-dropdown" *ngIf="showAdminMenu">
+      <button (click)="goToManageUsers()">Manage Users</button>
+    </div>
+
+    <div class="user-section">
+    <div class="avatar" (click)="toggleMenu()">
+      {{ firstLetter }}
+    </div>
+
+    <div class="dropdown" *ngIf="showMenu">
+      <p><strong>{{ username }}</strong></p>
+      <p class="role">{{ role }}</p>
+      <hr />
+      <button (click)="logout()">Logout</button>
+    </div>
+    </div>
+  </div>
+</header>
